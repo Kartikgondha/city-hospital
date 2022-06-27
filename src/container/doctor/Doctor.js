@@ -1,7 +1,32 @@
 import React from 'react';
+import {UncontrolledCarousel} from 'reactstrap';
+
 
 function Doctor(props) {
     return (
+        <>
+        <UncontrolledCarousel
+  items={[
+    {
+      altText: 'Slide 1',
+      caption: 'Our Doctor Team',
+      key: 1,
+      src: '../assets/img/dr1.webp'
+    },
+    {
+      altText: 'Slide 2',
+      caption: 'Our Team Are Working',
+      key: 2,
+      src: '../assets/img/dr2.jpg'
+    },
+    {
+      altText: 'Slide 3',
+      caption: 'Operation Theater',
+      key: 3,
+      src: '../assets/img/dr3.webp'
+    }
+  ]}
+ />
         <section id="doctors" className="doctors">
             <div className="container">
                 <div className="section-title">
@@ -78,6 +103,7 @@ function Doctor(props) {
                 </div>
             </div>
         </section>
+        </>
 
     );
 }
