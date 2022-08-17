@@ -17,6 +17,6 @@ function* watchSignup() {
 
 function* authsaga(){
     yield all({
-        watchSignup()
+        watchSignup
     })
 }
