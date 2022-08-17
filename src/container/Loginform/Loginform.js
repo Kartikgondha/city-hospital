@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import "./Loginform.css";
 import * as yup from 'yup';
+import { useDispatch } from 'react-redux'
 import { Form, Formik, useFormik } from 'formik';
+import { singupAction } from '../../reduxsaga/action/action';
 
 
 
@@ -11,6 +13,8 @@ function Loginform(props) {
 
     const [usertype, Setusertype] = useState('Login');
     const [password, setpassword] = useState(false);
+
+    const dispatch = useDispatch();
 
     let LoginSchema, initVal;
 
@@ -54,13 +58,14 @@ function Loginform(props) {
         validationSchema: Schema,
         onSubmit: (values) => {
 
-            if(usertype === 'Login'){
-                handleLogin();
-            }else{
+            // if(usertype === 'Login'){
+            //     handleLogin();
+            // }else{
 
-                alert(JSON.stringify(values, null, 2));
-            }
+            //     alert(JSON.stringify(values, null, 2));
+            // }
 
+            dispatch(singupAction(values))
         },
     });
 
