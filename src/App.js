@@ -14,35 +14,39 @@ import ListAppointment from "./container/Appointment/ListAppointment";
 import Public from "./PublicRoute/Public";
 import Private from "./PrivateRoute/Private";
 import { TheameProvider } from "./context/themeContext";
+import { Provider } from "react-redux";
+import { store } from "./reduxsaga/store";
 
 function App() {
   return (
     <>
-      <TheameProvider>
-        <Header />
+      <Provider store={store}>
+        <TheameProvider>
+          <Header />
 
-        <Switch>
-          <Public path={"/"} exact component={Home} />
-          <Public path={"/department"} exact component={Department} />
-          <Public path={"/doctor"} exact component={Doctor} />
-          <Public path={"/about"} exact component={About} />
-          <Public path={"/contact"} exact component={Contact} />
-          <Public
-            path={"/loginform"}
-            restricted={true}
-            exact
-            component={Loginform}
-          />
-          <Private path={"/appointment"} exact component={Appoinment} />
-          <Private
-            path={"/list_appointment"}
-            exact
-            component={ListAppointment}
-          />
-        </Switch>
+          <Switch>
+            <Public path={"/"} exact component={Home} />
+            <Public path={"/department"} exact component={Department} />
+            <Public path={"/doctor"} exact component={Doctor} />
+            <Public path={"/about"} exact component={About} />
+            <Public path={"/contact"} exact component={Contact} />
+            <Public
+              path={"/loginform"}
+              restricted={true}
+              exact
+              component={Loginform}
+            />
+            <Private path={"/appointment"} exact component={Appoinment} />
+            <Private
+              path={"/list_appointment"}
+              exact
+              component={ListAppointment}
+            />
+          </Switch>
 
-        <Footer />
-      </TheameProvider>
+          <Footer />
+        </TheameProvider>
+      </Provider>
     </>
   );
 }
