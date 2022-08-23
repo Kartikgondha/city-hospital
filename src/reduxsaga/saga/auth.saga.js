@@ -7,8 +7,10 @@ function* signup(action) {
    try {
       const user = yield call(signupApi, action.payload);
       // yield put({type: "USER_FETCH_SUCCEEDED", user: user});
+      console.log(user);
    } catch (e) {
       // yield put({type: "USER_FETCH_FAILED", message: e.message});
+      console.log(e);
    }
 }
 
