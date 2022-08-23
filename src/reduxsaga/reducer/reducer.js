@@ -1,14 +1,14 @@
-import * as ActionTypes from '../actiontype'
+import * as ActionTypes from "../Actiontype";
 
 const initVal = {
-    isLoding : false,
-    user : null,
-    error : ''
-}
+  isLoading: false,
+  user: null,
+  error: "",
+};
 
-export const authreducer = (action, state=initVal)=>{
-    switch(action.type){
-        default :
-        return state
-    }
-}
+export const authreducer = (state = initVal , action) => {
+  switch (action.type) {
+    default:
+      return state;
+  }
+};

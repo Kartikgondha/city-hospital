@@ -16,4 +16,3 @@ const Middlewares = [sagaMiddleware, thunk];
 sagaMiddleware.run(rootsaga)
 
 
-const action = type => store.dispatch({ type })

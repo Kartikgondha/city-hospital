@@ -58,14 +58,15 @@ function Loginform(props) {
         validationSchema: Schema,
         onSubmit: (values) => {
 
-            // if(usertype === 'Login'){
-            //     handleLogin();
-            // }else{
+            if(usertype === 'Login'){
+                handleLogin();
+            }else{
 
-            //     alert(JSON.stringify(values, null, 2));
-            // }
+                // alert(JSON.stringify(values, null, 2));
+                dispatch(singupAction(values))
+               
+            }
 
-            dispatch(singupAction(values))
         },
     });
 
