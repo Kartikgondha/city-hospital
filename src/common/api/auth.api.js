@@ -13,12 +13,19 @@ export const signupApi = (values) => {
     createUserWithEmailAndPassword(auth, values.email, values.password)
       .then((userCredential) => {
         const user = userCredential.user;
+
         onAuthStateChanged(auth, (user) => {
+          console.log(user);
           if (user.emailVerified) {
             resolve({ payload: "email registerd" });
-            sendEmailVerification(user);
           } else {
-            resolve({ payload: "please verified email" });
+            sendEmailVerification(user)
+              .then(() => {
+                resolve({ payload: "please verified email" });
+              })
+              .catch((e) => { 
+              })
+            
           }
         });
       })
