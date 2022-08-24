@@ -1,5 +1,5 @@
 import { all,call, takeEvery, } from 'redux-saga/effects'
-import { signupApi } from '../../common/api/auth.api';
+import { signinApi, signupApi } from '../../common/api/auth.api';
 import * as ActionTypes from '../Actiontype'
 
 
@@ -14,12 +14,26 @@ function* signup(action) {
    }
 }
 
+function* signin(action){
+   try{
+      const user = yield call(signinApi, action.payload)
+      console.log(user);
+   }catch(e){
+      console.log(e);
+   }
+}
+
 function* watchSignup() {
   yield takeEvery(ActionTypes.SIGN_UP, signup );
 }
 
+function* watchSignin(){
+   yield takeEvery(ActionTypes.SIGN_IN, signin)
+}
+
 export function* authsaga(){
     yield all([
-        watchSignup()
+        watchSignup(),
+        watchSignin()
     ])
 }

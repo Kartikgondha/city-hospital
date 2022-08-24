@@ -3,7 +3,7 @@ import "./Loginform.css";
 import * as yup from 'yup';
 import { useDispatch } from 'react-redux'
 import { Form, Formik, useFormik } from 'formik';
-import { singupAction } from '../../reduxsaga/action/action';
+import { singinAction, singupAction } from '../../reduxsaga/action/action';
 
 
 
@@ -48,8 +48,9 @@ function Loginform(props) {
 
     let Schema = yup.object().shape(LoginSchema);
 
-    let handleLogin=()=>{
+    let handleLogin=(values)=>{
         localStorage.setItem('user', '123')
+        dispatch(singinAction(values))
     }
 
 
@@ -59,7 +60,7 @@ function Loginform(props) {
         onSubmit: (values) => {
 
             if(usertype === 'Login'){
-                handleLogin();
+                handleLogin(values);
             }else{
 
                 // alert(JSON.stringify(values, null, 2));
