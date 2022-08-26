@@ -1,6 +1,7 @@
 import React from 'react';
 import { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
+import Alert from '../../component/Alert';
 import ThemeContext from '../../context/themeContext';
 
 function Header(props) {
@@ -25,7 +26,9 @@ function Header(props) {
                             <a href="#" className="linkedin"><i className="bi bi-linkedin" /></a>
                         </div>
                         <button onClick={()=>theme.toggle_theme(theme.theme)}>Theme Change</button>
+                        <Alert />
                     </div>
+                
                 </div>
                 <header id="header" className="fixed-top">
                     <div className="container d-flex align-items-center">
