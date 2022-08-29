@@ -49,7 +49,7 @@ function Loginform(props) {
     let Schema = yup.object().shape(LoginSchema);
 
     let handleLogin=(values)=>{
-        localStorage.setItem('user', '123')
+        // localStorage.setItem('user', '123')
         dispatch(singinAction(values))
     }
 

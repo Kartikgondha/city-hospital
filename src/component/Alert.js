@@ -19,6 +19,7 @@ function Alert(props) {
                   }
                 });
                 setTimeout(()=>{dispatch(resetAlert)},2000)
+                console.log(resetAlert);
         }
     },[alert.text])
 
