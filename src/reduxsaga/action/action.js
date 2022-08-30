@@ -7,3 +7,7 @@ export const singupAction = (values)=>(dispatch)=>{
 export const singinAction = (values)=>(dispatch)=>{
     dispatch({type:ActionTypes.SIGN_IN, payload: values})
 }
+
+export const signedinAction = (values)=> (dispatch)=>{
+    dispatch({type:ActionTypes.SIGNED_IN, payload: values})
+}

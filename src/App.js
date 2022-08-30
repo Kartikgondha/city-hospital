@@ -15,14 +15,17 @@ import Public from "./PublicRoute/Public";
 import Private from "./PrivateRoute/Private";
 import { TheameProvider } from "./context/themeContext";
 import { Provider } from "react-redux";
-import { store } from "./reduxsaga/store";
+import { persistor, store } from "./reduxsaga/store";
 import { SnackbarProvider } from "notistack";
+import { PersistGate } from 'redux-persist/integration/react'
+
 
 function App() {
   return (
     <>
       <SnackbarProvider maxSnack={3}>
         <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
           <TheameProvider>
             <Header />
 
@@ -48,6 +51,7 @@ function App() {
 
             <Footer />
           </TheameProvider>
+          </PersistGate>
         </Provider>
       </SnackbarProvider>
     </>
