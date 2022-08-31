@@ -4,6 +4,7 @@ import {
   onAuthStateChanged,
   sendEmailVerification,
   signInWithEmailAndPassword,
+  signOut
 } from "firebase/auth";
 import { auth } from "../../firebase";
 export const signupApi = (values) => {
@@ -76,3 +77,15 @@ export const signinApi = (values) => {
       });
   });
 };
+
+export const logoutApi = () => {
+  return new Promise((resolve, reject)=>{
+    signOut(auth)
+    .then(()=>{
+      resolve({ payload: "Logged out successfully" });
+    })
+    .catch((error)=>{
+      reject({ payload: error.errorCode});
+    })
+  })
+}
