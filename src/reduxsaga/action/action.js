@@ -18,3 +18,8 @@ export const LoggedoutAction = ()=>(dispatch)=>{
     dispatch({type:ActionTypes.LOGGED_OUT})
 
 }
+
+export const GoogleLoginAction = ()=>(dispatch)=>{
+    dispatch({type: ActionTypes.GOOGLE_LOGIN,})
+
+}

@@ -18,7 +18,7 @@ function Alert(props) {
                     horizontal: 'right'
                   }
                 });
-                setTimeout(()=>{dispatch(resetAlert)},2000)
+                setTimeout(()=>{dispatch(resetAlert())},2000)
         }
     },[alert.text])
 

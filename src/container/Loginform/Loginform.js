@@ -3,7 +3,7 @@ import "./Loginform.css";
 import * as yup from 'yup';
 import { useDispatch } from 'react-redux'
 import { Form, Formik, useFormik } from 'formik';
-import { singinAction, singupAction } from '../../reduxsaga/action/action';
+import { GoogleLoginAction, singinAction, singupAction } from '../../reduxsaga/action/action';
 
 
 
@@ -13,6 +13,10 @@ function Loginform(props) {
 
     const [usertype, Setusertype] = useState('Login');
     const [password, setpassword] = useState(false);
+
+    const handleGoggleLogin=()=>{
+        dispatch(GoogleLoginAction())
+    }
 
     const dispatch = useDispatch();
 
@@ -217,7 +221,15 @@ function Loginform(props) {
                                                 Signup
                                             </button>
                                         </div>
+
                             }
+                             <div
+                                            className="text-center">
+                                            <button
+                                                type="submit" onClick={()=>handleGoggleLogin()}>
+                                                Google Signin
+                                            </button>
+                                        </div>
                         </div>
                     </Form>
                 </Formik>
