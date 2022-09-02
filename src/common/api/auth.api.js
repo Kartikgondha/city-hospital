@@ -5,6 +5,7 @@ import {
   sendEmailVerification,
   signInWithEmailAndPassword,
   GoogleAuthProvider,
+  sendPasswordResetEmail,
   signOut,
   signInWithPopup
 } from "firebase/auth";
@@ -115,6 +116,24 @@ export const GoogleLoginApi = ()=>{
 
     reject({ payload : errorCode})
   
+  });
+  })
+}
+
+export const ForgotPassswordApi=(values)=>{
+  console.log("ForgotPassswordApi", values)
+  return new Promise((resolve, reject)=>{
+    sendPasswordResetEmail(auth, values.email)
+  .then(() => {
+    resolve({payload: "please check your email"})
+    // Password reset email sent!
+    // ..
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+
+    reject({payload : errorCode})
   });
   })
 }

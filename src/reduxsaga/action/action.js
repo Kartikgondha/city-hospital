@@ -23,3 +23,7 @@ export const GoogleLoginAction = ()=>(dispatch)=>{
     dispatch({type: ActionTypes.GOOGLE_LOGIN,})
 
 }
+
+export const ForgotPasswordAction = (values)=>(dispatch)=>{
+    dispatch({type:ActionTypes.FORGOT_PASSWORD, payload: values})
+}
