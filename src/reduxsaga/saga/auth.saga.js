@@ -62,7 +62,6 @@ function* googleLogin(action) {
 function* forgotPassword(action) {
   try{
     const user = yield call(ForgotPassswordApi, action.payload)
-    yield put(signedinAction(user.payload));
     history.push("/");
     yield put(setAlert({ text: user.payload, color: "success" }));
     console.log(user);

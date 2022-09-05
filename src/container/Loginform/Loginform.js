@@ -17,10 +17,14 @@ function Loginform(props) {
     const handleGoggleLogin=()=>{
         dispatch(GoogleLoginAction())
     }
-
-    const handleForgotPassword=()=>{
-        dispatch(ForgotPasswordAction())
-    }
+const HandlePassword=(values)=>{
+    console.log(values);
+    dispatch(ForgotPasswordAction(values))
+}
+    // const handleForgotPassword=(values)=>{
+    //     console.log(values);
+    //     dispatch(ForgotPasswordAction(values))
+    // }
 
     const dispatch = useDispatch();
 
@@ -46,7 +50,7 @@ function Loginform(props) {
             email: '',
             password: ''
         }
-    } else {
+    } else if (password){
         LoginSchema =
             { email: yup.string().email("Invalid email address format").required("Email is required") }
         initVal = {
@@ -66,14 +70,15 @@ function Loginform(props) {
         initialValues: initVal,
         validationSchema: Schema,
         onSubmit: (values) => {
-
-            if(usertype === 'Login'){
+            console.log(values);
+            if(usertype === 'Login' && !password){
                 handleLogin(values);
-            }else{
-
+            }else if(usertype === 'Signup' && !password){
                 // alert(JSON.stringify(values, null, 2));
                 dispatch(singupAction(values))
                
+            }else if(password === true){
+               HandlePassword(values)
             }
 
         },
@@ -203,9 +208,8 @@ function Loginform(props) {
                                 password ?
                                     <div
                                         className="text-center">
-                                        <button
-                                            type="submit" onClick={() => handleForgotPassword()}>
-                                            Forgot
+                                        <button type="submit">
+                                            Forgot Password
                                         </button>
                                     </div>
                                     :
@@ -225,7 +229,6 @@ function Loginform(props) {
                                                 Signup
                                             </button>
                                         </div>
-
                             }
                              <div
                                             className="text-center">

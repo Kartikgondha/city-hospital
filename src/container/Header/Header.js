@@ -13,7 +13,7 @@ function Header(props) {
   const dispatch = useDispatch()
 
   const handleLogout = () =>{
-    //dispatch(LogoutAction())
+    dispatch(LogoutAction())
   }
 
   console.log(theme);
